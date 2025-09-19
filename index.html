@@ -1,0 +1,1746 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio Dora</title>
+  <link rel="icon" href="me.jpg">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+   
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      color: black;
+    }
+    
+    
+    
+
+
+
+
+
+
+/*  .bar{width: 100vw;
+height: 105vh;
+background: #272b2b;}
+
+.counter{ position: fixed ;
+width: 100%;
+height: 100%;
+display:flex;
+justify-content : flex-end;
+align-items : flex-end;
+z-index: 1000000000;
+color: #94a1a1;
+padding: 0.2em 0.4em;
+font-size: 20vw;} */
+
+
+    
+    
+    
+    
+    
+    
+
+    h1, h3 {
+      color: black;
+    }
+
+    /* === NAVBAR === */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 200;
+      background: #000;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-weight: bold;
+      font-size: 1.2rem;
+      color: white;
+    }
+
+    #menu-toggle {
+      display: none;
+    }
+
+    .menu-icon {
+      width: 30px;
+      height: 24px;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      z-index: 201;
+    }
+
+    .menu-icon span {
+      height: 4px;
+      background: white;
+      width: 100%;
+      border-radius: 2px;
+      transition: 0.3s ease;
+    }
+
+    .menu-fullscreen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: #ff808ab3;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      transform: translateY(-100%);
+      transition: transform 0.5s ease;
+      z-index: 100;
+    }
+
+    .menu-fullscreen a {
+      color: white;
+      font-size: 2rem;
+      margin: 1rem 0;
+      text-decoration: none;
+    }
+
+    .close-icon {
+      position: absolute;
+      top: 1.5rem;
+      right: 2rem;
+      font-size: 2.5rem;
+      color: white;
+      cursor: pointer;
+    }
+
+    #menu-toggle:checked + label.menu-icon {
+      display: none;
+    }
+
+    #menu-toggle:checked ~ .menu-fullscreen {
+      transform: translateY(0);
+    }
+
+    .menu-desktop {
+      display: none;
+    }
+
+    /* === CONTENEUR SECTIONS === */
+    .zone-sections {
+      padding-top: 80px; /* corrige l’espace sous la navbar */
+      position: relative;
+      width: 100%;
+    }
+
+    .bloc-page {
+      min-height: calc(100vh - 80px); /* prend tout l’écran sans dépasser */
+      display: none;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .bloc-accueil {
+      background: linear-gradient(135deg, #1d976c, #93f9b9);
+      color: white;
+      font-size: 2rem;
+    }
+    
+   /* cont acc */
+    .flower-shop {
+    width: 100%;
+    height: 100vh;
+      font-family: sans-serif;
+      color:black;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem;
+      background: #f8f8f8;
+    }
+
+    /* Bandeau principal */
+    .shop-header { 
+  background:url("pro4.jpg");
+      width: 100%;
+      height: 260px;
+      border-radius: 0.5rem;
+      padding: 1.5rem 1rem;
+      text-align: center;
+    }
+
+    .shop-header h1 {
+      font-size: clamp(1.5rem, 5vw, 2.5rem);
+      font-weight: bold;
+      color: white;
+      line-height: 1.2;
+    }
+
+    .shop-features {
+      margin-top: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      align-items: center;
+    }
+
+    .shop-features span {
+      background: #fff;
+      padding: 0.4em 1em;
+      border-radius: 1.5rem;
+      font-size: clamp(0.9rem, 2.5vw, 1rem);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4em;
+    }
+
+    /* Menu */
+    .shop-menu {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      width: 100%;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .menu-item-home {
+      flex: 1 1 auto;
+      min-width: 6rem;
+      text-align: center;
+      padding: 0.6rem;
+      border-radius: 0.5rem;
+      background: #ff6aa9d1;
+      font-size: clamp(0.9rem, 2.5vw, 1rem);
+      font-weight: bold;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.3rem;
+    }
+    
+    .paragraphe {}
+
+    .menu-item-home span {
+      font-weight: normal;
+    }
+
+    /* === RADIOS === */
+    input[type="radio"] {
+      display: none;
+    }
+
+    #choix-accueil:checked ~ .zone-sections .bloc-accueil { display: flex; }
+    #choix-video:checked ~ .zone-sections .bloc-video { display: flex; }
+    #choix-catalogue:checked ~ .zone-sections .bloc-catalogue { display: flex; }
+
+    /* === BOUTONS SECTIONS === */
+    .zone-boutons {
+      position: sticky;
+      bottom: 0;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      background: rgba(0,0,0,0.7);
+      padding: 10px 0;
+    }
+
+    .zone-boutons label {
+      cursor: pointer;
+      padding: 10px 20px;
+      background: #333;
+      color: white;
+      border-radius: 10px;
+      transition: background 0.3s;
+    }
+
+    .zone-boutons label:hover {
+      background: #000;
+    }
+
+    /* === EXEMPLES D’AUTRES BLOCS === */
+    .bloc-video {
+      position: relative;
+      overflow: hidden;
+      color: white;
+    }
+
+    .bloc-video video {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+
+    .verre-flou {
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 20px;
+      padding: 40px;
+      font-size: 2rem;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 4px 30px rgba(0,0,0,0.2);
+      margin: auto;
+    }
+
+  .bloc-catalogue {
+      background: #f4f4f4;
+      font-size: 2rem;
+      color: #222;
+    }
+  /* cont about cata */
+   .luminescent-section {
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+      height: 100%;
+      gap: 2rem;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      background: #111;
+    }
+
+    .luminescent-text {
+      flex: 1 1 350px;
+      min-width: 280px;
+    }
+
+    .luminescent-title {
+      font-size: clamp(2rem, 6vw, 5rem);
+      font-weight: 900;
+      letter-spacing: 2px;
+      color: white;
+      font-family: 'Arial Black', sans-serif;
+      margin-bottom: 1rem;
+      position: relative;
+    }
+
+    .luminescent-title span {
+      font-size: clamp(1.5rem, 3vw, 2.5rem);
+      color: #ff69b4;
+      font-style: italic;
+      font-weight: 700;
+      position: absolute;
+      left: 50%;
+      bottom: -10px;
+      transform: translateX(-20%);
+    }
+
+    .about {
+      margin-top: 2rem;
+    }
+
+    .about h3 {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+      color: #ddd;
+      letter-spacing: 1px;
+    }
+
+    .about p {
+      font-size: 0.9rem;
+      max-width: 400px;
+      color: #ccc;
+    }
+
+    .see-more {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.6rem 1.5rem;
+      border: 1px solid #fff;
+      border-radius: 25px;
+      color: #fff;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .see-more:hover {
+      background: #fff;
+      color: #111;
+    }
+
+    .luminescent-image {
+      flex: 1 1 350px;
+      min-width: 280px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .luminescent-image img {
+      width: 100%;
+      max-width: 450px;
+      border-radius: 15px;
+      object-fit: cover;
+    }
+
+    /* Palette couleurs carrés */
+    .palette {
+      display: flex;
+      gap: 5px;
+      margin-top: 1rem;
+    }
+
+    .palette div {
+      width: 25px;
+      height: 25px;
+      border-radius: 4px;
+    }
+
+    .p1 { background: #ff99c8; }
+    .p2 { background: #ff70a6; }
+    .p3 { background: #ff477e; }
+    .p4 { background: #ff0054; }
+    .p5 { background: #d1006c; }
+    
+     /* design web */
+    .vide{margin: 100px; }
+    .design-web-section{
+margin-bottom:90px;
+margin-top: 700px;
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        background: black;  color: black; }
+    
+    .title-design-web{text-align:center;
+    margin-bottom: 50px;}
+    
+    .top-section {
+        display: flex;    
+        padding: 20px;
+        gap: 20px;
+  justify-content: space-between;
+    }
+    .title-section {
+       width: 200px; }
+ .design-web-section   .title-section h1 {
+        margin: 0;
+        font-size: 36px; 
+        color:black; }
+ .design-web-section   .title-section h3 {
+        margin: 10px 0 5px 5px;
+        font-size: 20px; color:black;}
+        
+ .design-web-section   .title-section p {
+        font-size: 14px;
+        color: red; }
+    .image-row {
+        display: flex;
+        gap: 30px;
+        flex-wrap: wrap;
+    }
+    .flip-card {
+        background-color: transparent;
+        width: 150px;
+        height: 150px;
+        perspective: 1000px;
+        cursor: pointer;
+        margin: 5px;
+    }
+    .flip-card-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        transition: transform 0.6s;
+        transform-style: preserve-3d;
+    }
+    .flip-card.flip .flip-card-inner {
+        transform: rotateY(180deg);
+    }
+    .flip-card-front, .flip-card-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+    .flip-card-front img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .flip-card-back {
+        background-color: #333;
+        color: white;
+        transform: rotateY(180deg);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+        font-size: 14px;
+    }
+    .bottom-section {
+        display: flex;                
+    flex-direction:row-reverse; justify-content:space-between;
+        padding: 50px;
+        gap: 20px;
+        margin-top:0px;
+    }
+    .bottom-text {
+        width: 160px;
+       
+    }
+    .bottom-text h3 {
+        margin: 0 0 5px 5px;
+    }
+    .bottom-text p {
+        font-size: 14px;
+        color: #555;
+    }
+    .bottom-images {
+        display: flex;
+        gap: 30px;
+        flex-wrap: wrap;
+    }
+    .bottom-card {
+        position: relative;
+        width: 150px;
+        height: 150px;
+        margin: 5px;
+    }
+    .popup-btn {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        width: 30px;
+        height: 30px;
+        border: 2px solid #fff;
+        border-radius: 50%;
+        background: rgba(0,0,0,0.3);
+        color: #fff;
+        font-size: 18px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        z-index: 2;
+    }
+    .popup-btn.bottom {
+        top: auto;
+        bottom: 10px;
+    }
+    .popup {
+        display: none;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: #fff;
+        padding: 20px;
+        border: 2px solid #333;
+        border-radius: 10px;
+        z-index: 10;
+        max-width: 200px;
+        text-align: center;
+    }
+    
+     
+    /* design graphique */
+    .design-graphic-section{
+        display: flex;
+  flex-direction: column;
+  flex-wrap:wrap;
+  align-items: center;
+  padding: 20px;
+  background: black;
+  height: 610px;
+    }
+   .main-title_design {
+  font-size: 3em;
+  margin-bottom: 9px;
+  text-align: center;
+  color:white;
+}
+
+.container_design {
+  position: relative;
+  width: 100%;
+  max-width: 1040px;
+  padding: 10px;
+}
+
+.image-wrapper_design {
+  position: relative;
+  width: 100%;
+  height:360px ;
+  max-width: 350px;
+  aspect-ratio: 1 / 2;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 16px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.main-image_design {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Texte overlay au survol */
+.image-overlay_design {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 1.5em;
+  font-weight: bold;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: opacity 0.3s;
+  text-align: center;
+  padding: 10px;
+}
+
+.image-wrapper_design:hover .image-overlay_design {
+  opacity: 1;
+}
+
+/* Images décoratives internes */
+.decor-image_design {
+  position: absolute;
+  width: 90px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.2);
+}
+
+.top-right_design {
+  top: 130px;
+  right: 10px;  
+}
+
+.bottom-left_design {
+  bottom: 10px;
+  left: 10px;
+}
+
+/* Miniatures */
+.thumbnails_design {
+  margin-top: 20px;
+  display: flex;
+  justify-content:center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.thumbnails_design img {
+  width: 60px;
+  height:60px;
+  object-fit: cover;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.3s, border 0.3s;
+  border: 2px solid transparent;
+}
+
+.thumbnails_design img:hover {
+  transform: scale(1.05);
+  border-color: #555;
+}
+
+/* Textes coins */
+.text_design {
+  position: absolute;
+  max-width: 180px;
+  padding: 10px;
+  background: rgba(255,255,255,0.85);
+  border-radius: 10px;
+  box-shadow: 0 0 6px rgba(0,0,0,0.1);
+}
+
+
+  
+}
+
+.top-left_design {
+  top: 10px;
+  left: 10px;
+}
+
+.bottom-right_design {
+  bottom: 10px;
+  right: 10px;
+} 
+
+
+
+/* réseau */    
+.reseau-section {margin-top:50px;
+}
+.header_reseau {position:sticky; top:0; background:#fff; border-bottom:1px solid #ddd; padding:10px 20px; display:flex; align-items:center; justify-content:space-between;}
+.header_reseau h1 {font-size:28px; font-weight:bold; text-align:center;}
+header input {padding:6px 10px; border:1px solid #ccc; border-radius:20px;}
+
+main {display:grid; grid-template-columns:1fr 2fr 1fr; gap:10px; padding:5px;}
+
+/* Flip Card */
+.flip-card_reseau {background:transparent; width:100%; height:200px; perspective:1000px; align-items: center; justify-content :center;}
+.flip-card-inner_reseau {position:relative; width:100%; height:100%; text-align:center;align-items: center; justify-content :center; transition: transform 0.8s; transform-style:preserve-3d;}
+.flip-card_reseau:hover .flip-card-inner_reseau {transform:rotateY(180deg);}
+.flip-card-front_reseau, .flip-card-back_reseau {
+  position:absolute; width:100%; height:100%; backface-visibility:hidden; border:1px solid #ddd; border-radius:10px; padding:15px;
+}
+.flip-card-front_reseau {background:#fff;}
+.flip-card-back_reseau {background:#333; color:white; transform:rotateY(180deg);}
+
+
+
+/* Gallery */
+.gallery_reseau {display:grid; grid-template-columns:repeat(2,1fr); gap:15px;}
+.card_reseau { background:#fff;height: 200px;border:1px solid #ddd; border-radius:10px; overflow:hidden;}
+.card_reseau.big_reseau {grid-column:span 2; height:220px;width: 100%; }
+.card_reseau img {width:100%; height:120px; object-fit:cover; background:#eee;}
+.card_reseau.big_reseau img {height:160px;}
+.card_reseau .info_reseau {padding:10px;}
+.card_reseau .info_reseau h3 {font-size:14px; margin-bottom:5px;}
+.card_reseau .info_reseau p {font-size:12px; color:#666;}
+
+
+
+/* Mini Cards */
+.mini-card_reseau {background:#fff; border:1px solid #ddd; border-radius:10px; margin-bottom:15px; overflow:hidden;}
+.mini-card_reseau img {width:100%; height:80px; background:#eee; object-fit:cover;}
+.mini-card_reseau .info_reseau {padding:10px; font-size:13px;}
+
+footer {margin-top:30px; text-align:center; font-size:12px; color:#777; padding:15px; border-top:1px solid #ddd; background:#fff;}
+  
+  /* banner design */
+  
+  
+  
+/* motion design */
+.motion-design-section{
+margin-top:50px;
+    padding: 20px;
+        box-sizing: border-box; 
+}
+/* Header */
+    .header_motion_design {
+        display: flex;
+        justify-content :center;
+        align-items: flex-end;
+        gap: 10px;
+        margin-bottom: 40px;
+    }
+    .header_motion_design h1 {
+        font-size: 60px;
+        margin: 0;
+    }
+    .header_motion_design h2 {
+        font-size: 30px;
+        margin: 0;
+        align-self: flex-end;
+    }
+
+    /* Section Layout */
+    .section_motion_design {
+        display: flex;
+        gap: 20px;
+        margin-bottom: 40px;
+    }
+
+    /* Video */
+    .video-container_motion_design {
+        flex: 1;
+    }
+    video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    /* Section Texte */
+ .text-container_motion_design {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        border: 1px solid #ccc;
+        padding: 10px;
+        box-sizing: border-box;
+        position: relative;
+    }
+      .text-container_motion_design p {
+        flex: 1;
+    }
+   .text-container_motion_design button {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        cursor: pointer;
+        background: #df4a8ae1;
+    }
+
+    /* Pop-up vidéo */
+ .text-container_motion_design   .popup1 {
+        display: none;
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        width: calc(100% - 20px);
+        height: calc(100% - 20px);
+        background: rgba(0,0,0,0.8);
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        z-index: 10;
+    }
+ .text-container_motion_design   .popup1 video {
+        max-width: 100%;
+        max-height: 100%;
+    }
+ .text-container_motion_design   .popup1.show {
+        display: flex;
+    }
+    .close-btn_motion_design {
+        margin-top: 10px;
+        padding: 5px 10px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    /* Section 2 */
+    .section2_motion_design {
+        display: flex;
+        gap: 20px;
+    }
+    .section2_motion_design .video-container_motion_design {
+        flex: 1;
+    }
+   .section2_motion_design .videos-container_motion_design {
+        flex: 1;
+        display: flex;
+        gap: 10px;
+    }
+    .section2_motion_design .videos-container_motion_design .video {
+        width: 50%;
+        height: 100%;
+        object-fit: cover;
+    }
+    
+    /* skill  section */
+  .accordion {
+  align-items:center; justify-content:center;
+  max-width: 400px;
+  margin: 10px ;
+  
+  font-family: sans-serif;
+  
+
+}
+
+.accordion-item {
+  background: #1e1e1e;
+  color: white;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.accordion-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  cursor: pointer;
+}
+
+.accordion-header h2 {
+  font-size: 18px;
+  margin: 0;
+}
+
+.accordion-header .number-accordion {
+  font-size: 32px;
+  font-weight: bold;
+  margin-right: 10px;
+  display: inline-block;
+}
+
+.toggle-btn-accordion {
+  background: none;
+  border: none;
+  font-size: 18px;
+  color: white;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  padding: 0 20px;
+  background: #2a2a2a;
+  transition: max-height 0.5s ease, padding 0.3s ease;
+}
+
+.accordion-item.active .accordion-content {
+  max-height: 150px; /* Ajuste selon ton contenu */
+  padding: 15px 20px;
+}
+
+.accordion-item.active .toggle-btn-accordion {
+  transform: rotate(180deg);
+}   
+
+
+.skill-section{
+ margin-top :90px;  
+ margin-bottom: 50px;
+ align-items:center; justify-content:space-between;
+background: #ff4093;
+padding: 50px;
+} 
+
+ .contact-section {
+      text-align: center;
+      padding: 40px;
+      border-radius: 25px;
+      background: #e0e5ec;
+      box-shadow: 9px 9px 16px #a3b1c6,
+                  -9px -9px 16px #ffffff;
+    }
+
+    .contact-section h2 {
+      margin-bottom: 20px;
+      font-size: 28px;
+      color: #333;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .btn {
+      padding: 15px 25px;
+      border-radius: 15px;
+      background: #e0e5ec;
+      box-shadow: 7px 7px 15px #a3b1c6,
+                  -7px -7px 15px #ffffff;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      color: #333;
+      text-decoration: none;
+      transition: all 0.2s ease-in-out;
+    }
+
+    .btn:hover {
+      box-shadow: inset 7px 7px 15px #a3b1c6,
+                  inset -7px -7px 15px #ffffff;
+      color: #ff2b9d;
+    }
+
+    .btn:active {
+      transform: scale(0.97);
+    }
+
+  /* Mobile (petits écrans) */
+@media (max-width: 600px) {
+  .top-section{
+  display:flex; 
+  }
+ .title-section {
+       width: 90px; }
+    .title-section h1 {
+        margin: 0;
+        font-size: 26px;  }
+    .title-section h3 {
+        margin: 6px 0 5px 5px;
+        font-size: 20px; }
+    .title-section p {
+        font-size: 12px;
+        color: #555; }
+    .image-row {
+        display: flex;
+        gap: 20px;
+        padding:6px;
+        flex-wrap: wrap;
+    }
+     .flip-card {
+        background-color: transparent;
+        width: 90px;
+        height: 90px;
+        perspective: 1000px;
+        cursor: pointer;
+        margin: 5px;
+    }
+    .bottom-section {
+        display: flex;                
+    flex-direction:row-reverse; justify-content:space-between;
+        padding: 10px;
+        gap: 20px;
+        margin:0px 0 0 5px;
+    }
+    
+    .bottom-text {
+        width: 80px;
+       
+    }
+    .bottom-text h3 {
+        margin: 0 0 5px 1px;
+    }
+    .bottom-text p {
+        font-size: 12px;
+        color: #555;
+    }
+    .bottom-images {
+        display: flex;
+        gap: 26px;
+        padding:10px;
+        flex-wrap: wrap;
+    }
+    .bottom-card {
+       
+        width: 90px;
+        height: 90px;
+        
+    }
+    
+    /* design graphique */
+    
+   .main-title_design {
+    font-size: 2em;
+  }
+
+  .image-wrapper_design {
+    max-width: 80vw;
+  }
+
+  .thumbnails_design img {
+    width: 50px;
+    height: 60px;
+  }
+  
+  /* Images décoratives internes */
+.decor-image_design {
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.2);
+}
+
+.top-right_design {
+ display :none;
+}
+
+  .text {
+   
+  }
+  
+.top-left_design{ display :none;}
+  .bottom-left_design {
+  display:none;
+}
+
+.text_design {
+  position: absolute;
+  width: 200px;
+  font-size: 10px;
+ padding:5px; 
+  background: rgba(255,255,255,0.85);
+  border-radius: 10px;
+  box-shadow: 0 0 6px rgba(0,0,0,0.1);
+}
+.text_design .bottom-right_design h3{
+    font-size:10px;}
+.top-left_design {
+  top: 10px;
+  left: 10px;
+}
+
+.bottom-right_design {
+ bottom:-30px;
+  right: 10px;
+}
+
+/* Miniatures */
+.thumbnails_design {
+  margin-top: 20px;
+  margin-bottom:24px;
+  display: flex;
+  justify-content:center;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+
+.reseau-section{ display :flex;
+flex-direction : column;}
+ 
+ .deuxième-card-reseau{
+    width: 150px;
+}
+
+/* Bandeau principal */
+    .shop-header {     
+      width: 100%;
+      height: 53vh;
+      border-radius: 0.5rem;
+      padding: 1.5rem 1rem;
+      text-align: center;
+      color:black;
+    }
+    
+     .accordion {
+  align-items:center; jstify-content :space-between;
+  max-width: 400px;
+  
+  font-family: sans-serif;
+  
+
+}
+
+.paragraphe {display:none;}
+
+}
+
+/* Tablettes */
+@media (min-width: 601px) and (max-width: 1024px) {
+  body {
+    font-size: 16px;
+  }
+}
+
+/* Ordinateurs */
+@media (min-width: 1025px) {
+  body {
+    font-size: 18px;
+  }
+  
+  .skill-section{
+  position:relative;
+ margin-top :90px;  
+ align-items:center; justify-content:center;
+ padding: 50px 50px 50px 50px;
+background: #ff4093;
+} 
+}
+
+    
+    
+    /* === MEDIA QUERIES MOBILE === */
+    @media (max-width: 600px) {
+      .title-section {
+        width: 90px;
+      }
+
+      .title-section h1 {
+        font-size: 26px;
+      }
+
+      .title-section h3 {
+        font-size: 20px;
+      }
+
+      .flip-card {
+        width: 90px;
+        height: 90px;
+      }
+      
+       .accordion {
+  align-items:center; jstify-content :space-between;
+  max-width: 400px;
+  
+  font-family: sans-serif;
+  
+
+}
+    }
+    
+    
+  </style>
+</head>
+<body>
+<h1 class="counter">0</h1> 
+ <div class="overlay">
+ <div class="bar"></div>
+  <div class="bar"></div>
+   <div class="bar"></div> 
+  <div class="bar"></div>  
+   <div class="bar"></div> 
+   <div class="bar"></div> 
+    <div class="bar"></div>
+  <div class="bar"></div>  
+  <div class="bar"></div>
+   <div class="bar"></div>     
+ </div>
+  
+  
+
+  <!-- Radios -->
+  <input type="radio" name="page" id="choix-accueil" checked>
+  <input type="radio" name="page" id="choix-video">
+  <input type="radio" name="page" id="choix-catalogue">
+
+  <!-- Navbar -->
+  <nav>
+    <div class="logo">Portfolio Dora</div>
+    <label for="menu-toggle" class="menu-icon">
+      <span></span><span></span><span></span>
+    </label>
+  </nav>
+
+  <!-- Menu fullscreen -->
+  <input type="checkbox" id="menu-toggle">
+  <div class="menu-fullscreen">
+ <span class="close-icon"></span>
+    <a href="#">Accueil</a>
+    <a href="#projet">Projets</a>
+    <a href="#footer">Contact</a>
+  </div>
+
+  <!-- Sections -->
+  <div class="zone-sections" >
+    <section class="bloc-page bloc-accueil" >
+      <section class="flower-shop">
+    <div class="shop-header">
+  <h1>Developpeuse<br>Informatique</h1>
+      <div class="shop-features">
+     <span>Web - Mobile</span>
+   <span>Base de données</span>
+      </div>
+    </div>
+
+    <aside class="shop-menu">
+      <div class="menu-item-home">
+  <span> Programmation 
+<br>
+      </span></div>
+      <div class="menu-item-home"><span>Base de données</span></div>
+      <div class="menu-item-home">
+      <span>Réseau informatique</span>
+      </div>
+      <div class="menu-item-home"><span>Design graphique</span></div>
+    </aside>
+  </section>
+    </section>
+
+    <section class="bloc-page bloc-video">
+      <video autoplay muted loop >
+        <source src="video/code.mp4" type="video/mp4">
+      </video>
+      <div class="verre-flou">Transcendant l'expérience digital</div>
+    
+
+    </section>
+
+   <section class="bloc-page bloc-catalogue">
+      <section class="luminescent-section">
+    <!-- Image -->
+    <div class="luminescent-image">
+      <img src="me.jpg" alt="Luminescent building">
+    </div>
+
+    <!-- Texte -->
+    <div class="luminescent-text">
+      <h1 class="luminescent-title">
+    Portfolio <span>Dora</span>
+      </h1>
+
+      <div class="about">
+        <h3>Ma mission ?</h3>
+        <p>
+          Transformer les idées en expériences visuelles et digitales uniques.
+
+Je suis Dora, passionnée par le design graphique, le motion design et le développement web. Mon parcours en informatique m’a permis d’allier créativité et technologie pour créer des solutions modernes et efficaces.
+        </p>
+        <a href="https://wa.me/242069965717" target="_blank" class="see-more">me contacter</a>
+
+        <div class="palette">
+          <div class="p1"></div>
+          <div class="p2"></div>
+          <div class="p3"></div>
+          <div class="p4"></div>
+          <div class="p5"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+    </section>
+  </div>
+
+  
+
+  <!-- Boutons radio -->
+  <div class="zone-boutons">
+    <label for="choix-accueil">Accueil</label>
+    <label for="choix-video">home</label>
+    <label for="choix-catalogue">A propos</label>
+  </div>
+</div>
+
+<div class="vide">
+    
+</div>
+
+<!-- page design web -->
+<div class="header_design">
+ <h1 class="title-design-web" id="projet"> Design Web - Mobile</h1>
+<!-- Top Section -->
+<div class="top-section">
+    <div class="title-section" >
+       
+   <h3>Applis</h3>
+        <p>Conception d’une application mobile Android intuitive qui permet de commander différents plats en quelques clics.</p>
+    </div>
+
+    <div class="image-row">
+        <div class="flip-card" onclick="this.classList.toggle('flip')">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <img src="web1.png" alt="Inteface accueil">
+                </div>
+                <div class="flip-card-back"> Page accueil de l'application Foodie</div>
+            </div>
+        </div>
+        <div class="flip-card" onclick="this.classList.toggle('flip')">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <img src="web2.png" alt="Interface menu">
+                </div>
+                <div class="flip-card-back">Menu avec plats et bouton pour commander</div>
+            </div>
+        </div>
+        <div class="flip-card" onclick="this.classList.toggle('flip')">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <img src="web4.png" alt="Interface catégorie">
+                </div>
+                <div class="flip-card-back">page catégorie avec liste de boutons</div>
+            </div>
+        </div>
+        <div class="flip-card" onclick="this.classList.toggle('flip')">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <img src="web5.png" alt="page des boissons">
+                </div>
+                <div class="flip-card-back">page catégorie boissons de Foodie</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bottom Section -->
+<div class="bottom-section">
+    <div class="bottom-text">
+    <h3>Site web</h3>
+        <p>Création d’un portfolio moderne et responsive, pensé pour capter l’attention et valoriser chaque projet</p>
+    </div>
+
+    <div class="bottom-images">
+        <!-- Première image avec popup bouton -->
+        <div class="bottom-card">
+            <img src="web6.png" alt="section acceuil" style="width:100%; height:100%; border-radius:10px;">
+            <div class="popup-btn" onclick="togglePopup(event,'popup')">!</div>
+            <div class="popup" id="popup">Cliquez sur chaques images pour une surprise.</div>
+        </div>
+
+        <!-- Deuxième image flip -->
+        <div class="flip-card bottom-card" onclick="this.classList.toggle('flip')">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <img src="web8.png" alt="section 2">
+                </div>
+                <div class="flip-card-back">carrousel images defilantes</div>
+            </div>
+        </div>
+
+        <!-- Troisième image flip -->
+        <div class="flip-card bottom-card" onclick="this.classList.toggle('flip')">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <img src="web12.png" alt="section design">
+                </div>
+                <div class="flip-card-back"> défilé d'images par geste manuel</div>
+            </div>
+        </div>
+
+        <!-- Dernière image avec popup bouton en bas -->
+        <div class="bottom-card">
+            <img src="web14.png" alt="menu hamburger" style="width:100%; height:100%; border-radius:10px;">
+            
+          
+        </div>
+    </div>
+</div>
+</div>
+<!-- design graphique -->
+<div class="design-graphic-section">
+  
+ <h1 class="main-title_design">Design graphique </h1>
+ <!-- Images décoratives -->
+      
+  <div class="container_design">
+    <!-- Texte coin haut gauche -->
+    <div class="text_design top-left_design">
+   <h2>Conception design</h2>
+      <p>Réalisation de visuels modernes et créatifs (logos, affiches, contenus digitaux) adaptés à chaque besoin</p>
+    </div>
+
+    <!-- Texte coin bas droite -->
+    <div class="text_design bottom-right_design">
+      <h2>Conseils</h2>
+      <p>Cliquez sur chaques images du site pour voir du texte !</p>
+    </div>
+
+    <!-- Image principale avec overlay + décorations -->
+    <div class="image-wrapper_design">
+      <img id="mainImage_design" src="design18.jpg" alt="Main Image" class="main-image_design">
+
+      <!-- Texte superposé -->
+      <div class="image-overlay_design" id="imageOverlay_design">Texte image 1</div>
+
+     
+    </div>
+
+    <!-- Miniatures -->
+    <div class="thumbnails_design">
+      <img src="affiche5.jpg" data-text="Conception d’une affiche élégante et festive pour célébrer un événement académique." onclick="changeImage(this)" alt="thumb1">
+      <img src="affiche8.png" data-text="Réalisation d’un contenu visuel adapté aux statuts WhatsApp pour renforcer la communication d’un tiers" onclick="changeImage(this)" alt="thumb2">
+      <img src="affiche1.jpg" data-text="Design d’un packaging moderne et attrayant pour un client" onclick="changeImage(this)" alt="thumb3">
+      <img src="affiche3.jpg" data-text="Création d’un visuel percutant pour optimiser l’engagement sur les réseaux sociaux." onclick="changeImage(this)" alt="thumb4">
+      <img src="affiche2.jpg" data-text="Design d’un support visuel clair et professionnel pour promouvoir une formation." onclick="changeImage(this)" alt="thumb5">
+    </div>
+  </div> 
+    
+
+    </section>
+    
+</div>
+<!-- réseau -->
+<div class="reseau-section">
+    <header class="header_reseau">
+ <h1>Réseau informatique</h1>
+    <p></p>
+  </header>  <main>
+    <!-- Left column -->
+    <aside>
+      <div class="flip-card_reseau">
+        <div class="flip-card-inner_reseau">
+          <div class="flip-card-front_reseau">
+            <h3>Réseau</h3>
+   <p>Avec adresses IP, VLAN et protocole DHCP.
+</p>
+          </div>
+          <div class="flip-card-back_reseau">
+            <h3>détails projets</h3>
+    <p>Réalisés avec Cisco packet tracer</p>
+          </div>
+        </div>
+      </div>
+     
+    </aside><!-- Center column -->
+<section class="gallery_reseau">
+  <div class="card_reseau big_reseau">
+    <img src="cisco1.jpg" alt="">
+    <div class="info_reseau">
+      <h3>Réseau LAN</h3>
+<p>Accès sans fil et VLAN</p>
+    </div>
+  </div>
+  <div class="card_reseau deuxième-card-reseau">
+    <img src="cisco2.jpg" alt="">
+    <div class="info_reseau"><h3> configurations<h3><p>Sécurisation de port et configurations switch</p></div>
+  </div>  
+</section>
+
+<!-- Right column -->
+<aside>
+  <div class="mini-card_reseau">
+    <img src="cisco3.jpg" alt="">
+    <div class="info_reseau">Sécurité Accès Port</div>
+  </div>
+  <div class="mini-card_reseau">
+    <img src="cisco6.jpg" alt="">
+    <div class="info_reseau">test ping IP</div>
+  </div>
+  <div class="mini-card_reseau">
+    <img src="cisco5.jpg" alt="">
+    <div class="info_reseau">Sertissage câble</div>
+  </div>  
+</aside>
+
+  </main>  
+</div>
+
+<!-- motion design -->
+<div class="motion-design-section">
+    <!-- Header -->
+<div class="header_motion_design">
+    <h1>MOTION</h1>
+    <h2>Design</h2>
+</div>
+
+<!-- Section 1 -->
+<div class="section_motion_design">
+    <div class="video-container_motion_design">
+ <img src="video/motion5.gif" class="video" style="width: 35vw; height: 100%;">
+    </div>
+    <div class="text-container_motion_design">
+ <p>Création d’animations dynamiques et captivantes pour donner vie aux visuels.
+Pour transmettre des messages de manière impactante.</p>
+<p class="paragraphe">
+   Le motion design permet de donner vie aux idées grâce à l’animation graphique. Il rend les messages plus clairs, captivants et mémorables, que ce soit pour des vidéos promotionnelles, des présentations ou des contenus sur les réseaux sociaux. En combinant créativité et technique, il transforme un simple concept en expérience visuelle dynamique. 
+</p>
+        <button onclick="openPopup()">Autres</button>
+        <div class="popup1" id="popup1">
+            <video src="video/motion4.mp4"  muted  controls></video>
+            <button class="close-btn_motion_design" onclick="closePopup()">X</button>
+        </div>
+    </div>
+</div>
+
+<!-- Section 2 -->
+<div class="section2_motion_design">
+    <div class="video-container_motion_design">
+ <img src="video/motion3.gif"  class="video" style="width: 50vw;" >
+    </div>
+    <div class="videos-container_motion_design">
+        <img src="video/motion2.gif" class="video" >
+        <img src="video/motion1.gif" class="video">
+    </div>
+</div>
+</div>
+
+<!-- skill -->
+<div class="skill-section">
+    <div class="accordion">
+  <div class="accordion-item">
+    <div class="accordion-header">
+      <h2><span class="number-accordion">10</span> outils logiciels </h2>
+      <button class="toggle-btn-accordion">▼</button>
+    </div>
+    <div class="accordion-content">
+      <p>Microsoft Office, Cisco packet tracer, Visual studio code, Git hub, Lunasi, Eclipse, Meta business suite, SQL server, VirtualBox, Canva, Photoshop. </p>
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <div class="accordion-header">
+      <h2><span class="number-accordion">3</span>Langages de programmations</h2>
+      <button class="toggle-btn-accordion">▼</button>
+    </div>
+    <div class="accordion-content">
+  <p>Java, Java script, SQL </p>
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <div class="accordion-header">
+      <h2><span class="number-accordion">2</span>Systèmes d'exploitations</h2>
+      <button class="toggle-btn-accordion">▼</button>
+    </div>
+    <div class="accordion-content">
+      <p>Linux (Ubuntu), Windows</p>
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <div class="accordion-header">
+      <h2><span class="number-accordion">4</span>Compétences </h2>
+      <button class="toggle-btn-accordion">▼</button>
+    </div>
+    <div class="accordion-content">
+ <p>Programmation, Base de données, Réseau, Design graphique</p>
+    </div>
+  </div>
+</div>  
+</div>
+
+<section class="contact-section">
+    <h2>Me Contacter</h2>
+    <div class="buttons">
+      <a class="btn" href="https://wa.me/242069965717" target="_blank">WhatsApp</a>
+      <a class="btn" href="mailto: doramaloumbi@gmail.com">Gmail</a>
+      <a class="btn" href="https://dora-salon.my.canva.site/dora-portfolio-infographe" target="_blank">Portfolio Canva</a>
+      <a class="btn" href="https://tonportfolio-graphique.com" target="_blank">Portfolio Graphique</a>
+      <a class="btn" href="https://github.com/dora-divine" target="_blank">GitHub</a>
+    </div>
+  </section>
+
+<footer id="footer">
+  Tous droits réservés © 2024 — Dora Portfolio 
+  </footer> 
+
+ 
+ 
+ <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+ 
+ 
+ 
+<script>
+    
+function startLoader()  {
+let counterElement =  document.querySelector(".counter"); 
+let currentValue = 0;
+
+function updateCounter (){
+ if(currentValue === 100) {
+return;     
+ }  
+ 
+ currentValue += Math.floor(Math.random() * 10) + 1;
+ 
+ if(currentValue > 100) {
+currentValue = 100;    
+ }
+ 
+counterElement.textContent = currentValue;
+
+let delay = Math.floor(Math.random() * 200) + 50; 
+
+setTimeout(updateCounter, delay);
+ 
+}
+
+updateCounter();
+}
+
+startLoader();   
+
+gsap.to(".counter", 0.25, {
+delay :1.5,
+opacity : 0, 
+});
+
+
+gsap.to(".bar", 1.5, {
+ delay:1.5,
+ height:0,
+ stagger : {
+     amount :0.5,
+ },
+ ease: "power4.inOut",
+});
+
+gsap.from(".h1",1.5,{
+    delay: 4,
+   y:700,
+   stagger: {
+       amount :0.5,
+   } ,
+   ease :"power4.inOut",
+    
+});
+
+gsap.from (".hero",2,{
+    delay:4.5,
+    y:400,
+ease:"power4.inOut",
+});
+    
+    
+    
+    
+function togglePopup(event, id){
+    event.stopPropagation(); // empêche le clic de propager et fermer immédiatement
+    const popup = document.getElementById(id);
+    popup.style.display = popup.style.display === 'block' ? 'none' : 'block';
+}
+
+// fermer tous les popups si on clique ailleurs
+document.addEventListener('click', () => {
+    document.querySelectorAll('.popup').forEach(p => p.style.display = 'none');
+});
+
+
+function changeImage(img) {
+  const mainImage_design = document.getElementById('mainImage_design');
+  const overlay = document.getElementById('imageOverlay_design');
+
+  mainImage_design.src = img.src;
+  overlay.textContent = img.dataset.text;
+}
+
+function openPopup() {
+    document.getElementById('popup1').classList.add('show');
+}
+function closePopup() {
+    const popup = document.getElementById('popup1');
+    popup.classList.remove('show');
+    const video = popup.querySelector('video');
+    video.pause(); // stop la vidéo
+    video.currentTime = 0; // revient au début
+}
+
+
+
+ const items = document.querySelectorAll('.accordion-item');
+
+items.forEach(item => {
+  item.querySelector('.accordion-header').addEventListener('click', () => {
+    // Fermer tous les autres items
+    items.forEach(i => {
+      if (i !== item) i.classList.remove('active');
+    });
+
+    // Toggle l'item cliqué
+    item.classList.toggle('active');
+  });
+});  
+
+document.addEventListener("DOMContentLoaded", () => {
+    const videos = document.querySelectorAll(".lazy-videos");
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        const video = entry.target;
+        if (entry.isIntersecting) {
+          // Si la vidéo est visible et en pause → on lance
+          if (video.paused) {
+            video.play().catch(err => {
+              console.log("Erreur lecture vidéo :", err);
+            });
+          }
+        } else {
+          // Si la vidéo sort de l'écran et qu'elle joue → on met en pause
+          if (!video.paused) {
+            video.pause();
+          }
+        }
+      });
+    }, { threshold: 0.5 }); // au moins 50% visible pour jouer
+
+    videos.forEach(video => observer.observe(video));
+  });
+</script>
+
+</body>
+</html>
